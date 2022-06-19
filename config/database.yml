@@ -58,6 +58,6 @@ production:
   username: <%= Rails.application.credentials.db[:user_name] %>
   password: <%= Rails.application.credentials.db[:password] %>
   host: <%= Rails.application.credentials.db[:endpoint] %>
-  # socket: /var/lib/mysql/mysql.sock
+  socket: /var/lib/mysql/mysql.sock
   pool: 20
   timeout: 1000

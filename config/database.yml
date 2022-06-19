@@ -15,8 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: railsuser
   password: railspass
-  # socket: /tmp/mysql.sock
-  socket: /var/lib/mysql2/mysql.sock
+  socket: /tmp/mysql.sock
 
 development:
   <<: *default
@@ -60,6 +59,5 @@ production:
   password: <%= Rails.application.credentials.db[:password] %>
   host: <%= Rails.application.credentials.db[:endpoint] %>
   # socket: /var/lib/mysql/mysql.sock
-  # socket: /var/lib/mysql2/mysql.sock
   pool: 20
   timeout: 1000

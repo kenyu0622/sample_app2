@@ -3,7 +3,8 @@ services:
   app:
     build:
       context: .
-    command: bundle exec puma -C config/puma.rb
+    command: bundle exec puma -C config/puma.rb -e production
+    # command: bundle exec puma -C config/puma.rb
 
     volumes:
       - .:/fitO2
@@ -12,24 +13,24 @@ services:
       - log-data:/fitO2/log
     networks:
       - fitO2-network
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
+    # ports:
+    #   - "3000:3000"
+  #   depends_on:
+  #     - db
 
-  db:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
-      MYSQL_DATABASE: fitO2_development
-    volumes:
-      - db-data:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    networks:
-      - fitO2-network
+  # db:
+  #   image: mysql:5.7
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: password
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
+  #     MYSQL_DATABASE: fitO2_development
+  #   volumes:
+  #     - db-data:/var/lib/mysql
+  #   ports:
+  #     - "3306:3306"
+  #   networks:
+  #     - fitO2-network
 
   web:
     build:
